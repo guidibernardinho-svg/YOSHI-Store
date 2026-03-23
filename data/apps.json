@@ -1,0 +1,16 @@
+{
+  "apps": [
+    {
+      "name": "ftpd",
+      "desc": "Servidor FTP",
+      "url": "https://github.com/mtheall/ftpd/releases/latest/download/ftpd.3dsx",
+      "path": "sdmc:/3ds/ftpd/ftpd.3dsx"
+    },
+    {
+      "name": "Anemone3DS",
+      "desc": "Temas",
+      "url": "https://github.com/astronautlevel2/Anemone3DS/releases/latest/download/Anemone3DS.3dsx",
+      "path": "sdmc:/3ds/anemone/Anemone3DS.3dsx"
+    }
+  ]
+}
