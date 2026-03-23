@@ -1,0 +1,38 @@
+name: Build HB Store
+
+on:
+  push:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install devkitPro
+        run: |
+          sudo apt update
+          sudo apt install -y git wget
+
+          git clone https://github.com/devkitPro/pacman.git
+          cd pacman
+          sudo bash ./install.sh
+
+          sudo dkp-pacman -Syu --noconfirm
+          sudo dkp-pacman -S --noconfirm devkitARM 3ds-dev
+
+      - name: Build
+        run: |
+          export DEVKITPRO=/opt/devkitpro
+          export DEVKITARM=$DEVKITPRO/devkitARM
+          make
+
+      - name: Upload
+        uses: actions/upload-artifact@v4
+        with:
+          name: yoshistore
+          path: |
+            *.3dsx
+            *.cia
